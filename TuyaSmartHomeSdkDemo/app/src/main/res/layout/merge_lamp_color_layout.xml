@@ -2,6 +2,33 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:id="@+id/ll_lamp_color_scene"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="220dp"
+        android:layout_marginLeft="@dimen/lamp_bar_margin_left"
+        android:layout_marginRight="@dimen/lamp_bar_margin_left"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible">
+        <Button
+            android:id="@+id/button_scene_1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="scene_1" />
+        <Button
+            android:id="@+id/button_scene_2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="scene_2" />
+        <Button
+            android:id="@+id/button_scene_3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="scene_3" />
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/ll_lamp_color_lighting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="@dimen/mg_80"
-        android:layout_marginLeft="@dimen/lamp_bar_margin_left"
+        android:layout_marginLeft="40dp"
         android:layout_marginRight="@dimen/lamp_bar_margin_left"
         android:gravity="center"
         android:orientation="horizontal"
@@ -85,4 +112,46 @@
             android:layout_weight="0"
             android:text="@string/lamp_color_saturation_max"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_lamp_colorlengnuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="175dp"
+        android:layout_marginLeft="@dimen/lamp_bar_margin_left"
+        android:layout_marginRight="@dimen/lamp_bar_margin_left"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0"
+            android:text="@string/lamp_color_temper_high"/>
+
+        <SeekBar
+            android:id="@+id/sb_lamp_colorlengnuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:maxHeight="@dimen/edit_saturation_seekbar_height"
+            android:progressDrawable="@drawable/seekbar_edit_filter_style"
+            android:thumb="@drawable/edit_saturation_seekbar_selector"
+            android:thumbOffset="0dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0"
+            android:text="@string/lamp_color_temper_low"/>
+    </LinearLayout>
+
+
 </merge>

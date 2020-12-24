@@ -674,4 +674,15 @@
     <string name="login_qrlogin_pad_info">需要使用手机 app 扫码</string>
     <string name="login_qrcode">二维码扫码登录</string>
 
+    <string name="lamp_close_tip">点击 关灯</string>
+    <string name="lamp_open_tip">点击 开灯</string>
+    <string name="lamp_scene_leisure">Relax</string>
+    <string name="lamp_color_light_min">亮度-</string>
+    <string name="lamp_color_light_max">亮度+</string>
+    <string name="lamp_color_saturation_min">Plain</string>
+    <string name="lamp_color_saturation_max">Colorful</string>
+    <string name="lamp_color_temper_high">暖光</string>
+    <string name="lamp_color_temper_low">冷光</string>
+    <string name="lamp_color_saturation">Color mode</string>
+    <string name="lamp_color_mode">彩色模式</string>
 </resources>
