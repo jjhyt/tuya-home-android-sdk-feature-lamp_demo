@@ -50,6 +50,12 @@ public class LampActivity extends BaseActivity implements ILampView {
     public TextView mButtonscene2;
     @BindView(R.id.button_scene_3)
     public TextView mButtonscene3;
+    @BindView(R.id.button_scene_scene)
+    public TextView mButtonscene;
+    @BindView(R.id.button_scene_white)
+    public TextView mButtonwhite;
+    @BindView(R.id.button_scene_color)
+    public TextView mButtoncolor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +78,30 @@ public class LampActivity extends BaseActivity implements ILampView {
             @Override
             public void onClick(View view) {
                 mLampPresenter.onButtonscene2();
-                // mButtonscene1.setText("SUCC");
             }
         });
         mButtonscene3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mLampPresenter.onButtonscene3();
-                // mButtonscene1.setText("SUCC");
+            }
+        });
+        mButtonscene.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLampPresenter.onButtonscene();
+            }
+        });
+        mButtonwhite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLampPresenter.onButtonwhite();
+            }
+        });
+        mButtoncolor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLampPresenter.onButtoncolor();
             }
         });
     }

@@ -1,6 +1,7 @@
 APP说明：
 修改了APP背景图片，APP图标，APP名称，编译生成了正式的APK文件安装。
-其它文件还未修改
+在Lamp_Demo基础上，进入的设备列表界面有些许尝试改变，灯的控制界面增加了白光按钮和5个场景控制按钮，
+增加了一个冷暖光的控制条！其它功能还在研究中...
 
 目前完成的工作：
 首先是下载安装Git ，选择要Git下载Demo的文件夹，
@@ -29,7 +30,7 @@ git clone https://github.com/jjhyt/tuya-home-android-sdk.git
                 outputFileName = "ZhihuiZhaoming.apk"
             }
     }
-8 TuyaSmartApp.java中修改 String TAG = "ZhihuiZhaoming" 
+8 TuyaSmartApp.java中修改 String TAG = "ZhihuiZhaoming"
   去掉 @SuppressLint("StaticFieldLeak")
   TuyaSmartApp.java上点右键，选 Refactor-Rename 改名字
 
@@ -38,7 +39,7 @@ git clone https://github.com/jjhyt/tuya-home-android-sdk.git
 
 修改好了代码，然后用git diff来查看一下修改的区别。用git status可以清楚看到被修改的是什么文件。
 git add -A 把代码加入到暂缓区。
-git commit -m "这里我们加入留言注释。"
+git commit -m "做了些美化"
 git pull origin master
 git push origin master
 分别执行这两条指令，然后输入远程仓库的相应信息，这样让本地和远程同步了。

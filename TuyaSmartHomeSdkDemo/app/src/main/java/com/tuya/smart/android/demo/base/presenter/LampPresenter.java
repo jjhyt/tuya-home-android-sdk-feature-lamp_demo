@@ -235,4 +235,54 @@ public class LampPresenter extends BasePresenter implements ILightListener {
         });
 
     }
+    public void onButtonscene(){
+        HashMap<String, Object> dpCodeMap = new HashMap<>();
+        dpCodeMap.put("work_mode", "scene");
+        mLightDevice.publishCommands(dpCodeMap, new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+
+    }
+    public void onButtonwhite(){
+        HashMap<String, Object> dpCodeMap = new HashMap<>();
+        dpCodeMap.put("work_mode", "white");
+        mLightDevice.publishCommands(dpCodeMap, new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+
+
+    }
+    public void onButtoncolor(){
+        HashMap<String, Object> dpCodeMap = new HashMap<>();
+        dpCodeMap.put("work_mode", "scene_4");
+        mLightDevice.publishCommands(dpCodeMap, new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+
+
+    }
 }
