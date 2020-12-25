@@ -43,6 +43,14 @@ public class LampActivity extends BaseActivity implements ILampView {
     @BindView(R.id.fl_lamp_white_operation)
     public View mOperationView;
 
+    //绑定按钮ID
+    @BindView(R.id.button_scene_1)
+    public TextView mButtonscene1;
+    @BindView(R.id.button_scene_2)
+    public TextView mButtonscene2;
+    @BindView(R.id.button_scene_3)
+    public TextView mButtonscene3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +60,28 @@ public class LampActivity extends BaseActivity implements ILampView {
         initMenu();
         initView();
         initPresenter();
+//添加按钮事件
+        mButtonscene1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLampPresenter.onButtonscene1();
+               // mButtonscene1.setText("SUCC");
+            }
+        });
+        mButtonscene2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLampPresenter.onButtonscene2();
+                // mButtonscene1.setText("SUCC");
+            }
+        });
+        mButtonscene3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLampPresenter.onButtonscene3();
+                // mButtonscene1.setText("SUCC");
+            }
+        });
     }
 
     private void initView() {
@@ -136,11 +166,16 @@ public class LampActivity extends BaseActivity implements ILampView {
         mLampPresenter.syncColorToLamp(bean);
     }
 
+    @Override
+    public void sendTempColor(ColorBean bean) {
+        mLampPresenter.syncTempToLamp(bean);
+    }
 
     @OnClick(R.id.iv_lamp_close)
     public void onLampClick() {
         mLampPresenter.onClickLampSwitch();
     }
+
 
     @OnClick(R.id.ll_lamp_bottom_operation)
     public void onClickArrawUp() {
@@ -169,6 +204,7 @@ public class LampActivity extends BaseActivity implements ILampView {
     }
 
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -179,4 +215,8 @@ public class LampActivity extends BaseActivity implements ILampView {
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
+
+
+
 }

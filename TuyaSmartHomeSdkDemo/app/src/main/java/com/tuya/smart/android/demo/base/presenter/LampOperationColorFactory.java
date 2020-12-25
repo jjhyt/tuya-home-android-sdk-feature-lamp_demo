@@ -18,20 +18,23 @@ import com.tuya.smart.android.demo.base.view.ILampView;
 import com.tuya.smart.android.demo.base.widget.ColorPicker;
 import com.tuya.smart.android.demo.base.widget.LampView;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 /**
  * Created by letian on 15/12/10.
  */
 public class LampOperationColorFactory implements LampOperationFactory, SeekBar.OnSeekBarChangeListener {
-
+//定义拖动条和ID绑定
     @BindView(R.id.sb_lamp_color_lighting)
     public SeekBar mLightBar;
     @BindView(R.id.sb_lamp_color_saturation)
     public SeekBar mSaturationBar;
+    @BindView(R.id.sb_lamp_colorlengnuan)
+    public SeekBar mLengnuanBar;
 
-
+//定义拖动条最小值和最大值
     private static final int S_COLOR_LIGHT_MIN_COLOR = 11;
     private static final int S_COLOR_SATURATION_MAX = 255;
     private static final int S_COLOR_LIGHT_MAX = S_COLOR_SATURATION_MAX ;
@@ -41,6 +44,7 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
 
     @BindView(R.id.tv_lamp_color_mode)
     public TextView mLampModeViewTip;
+
 
     @BindView(R.id.picker)
     public LampView mLampView;
@@ -65,14 +69,17 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
 
     }
 
-
+    //初始化拖动条
     private void initSeekBar() {
         mLightBar.setOnSeekBarChangeListener(this);
         mLightBar.setMax(S_COLOR_LIGHT_MAX);
         mSaturationBar.setOnSeekBarChangeListener(this);
         mSaturationBar.setMax(S_COLOR_LIGHT_MAX);
+        mLengnuanBar.setOnSeekBarChangeListener(this);
+        mLengnuanBar.setMax(S_COLOR_LIGHT_MAX);
         mLightBar.setProgress(S_COLOR_LIGHT_MAX);
         mSaturationBar.setProgress(S_COLOR_LIGHT_MAX);
+        mLengnuanBar.setProgress(S_COLOR_LIGHT_MAX);
     }
 
     private void initView(Activity activity) {
@@ -119,10 +126,12 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
         mLampView.startAnimation(puzzleAnimation);
     }
 
+    //出界面里设定拖动条的值和颜色值
     @Override
     public void updateOperationView(RgbBean bean) {
             mLightBar.setProgress(((ColorBean) bean).getValue() - S_COLOR_LIGHT_MIN_COLOR);
             mSaturationBar.setProgress(((ColorBean) bean).getSaturation());
+            mLengnuanBar.setProgress(((ColorBean) bean).getWhite());
             mLampView.setColor(bean.getColor());
             if (mLampView.getVisibility() == View.GONE) {
                 mLampView.setVisibility(View.VISIBLE);
@@ -138,10 +147,20 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
     public void onStartTrackingTouch(SeekBar seekBar) {
 
     }
-
+//手指滑动结束，这里发送颜色值。
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        sendLampColor();
+        //判断是否冷暖进度条拖动,是则设置冷暖光,不是则设置颜色
+        switch(seekBar.getId()) {
+            case R.id.sb_lamp_colorlengnuan:{
+                sendtempColor();
+                break;
+            }
+            default:
+                sendLampColor();
+                break;
+        }
+
     }
 
     private void sendLampColor() {
@@ -150,6 +169,7 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
 
         bean.setValue(mLightBar.getProgress() + S_COLOR_LIGHT_MIN_COLOR);
         bean.setSaturation(mSaturationBar.getProgress());
+
         int lampColor = mView.getLampColor();
         float[] hsv = new float[3];
         Color.colorToHSV(lampColor, hsv);
@@ -158,7 +178,16 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
         int color = Color.HSVToColor(hsv);
         bean.setColor(color);
         mView.sendLampColor(bean);
+
     }
+    private void sendtempColor() {
+        ColorBean bean = new ColorBean();
+
+        //发送冷暖光的值
+        bean.setWhite(mLengnuanBar.getProgress());
+        mView.sendTempColor(bean);
+    }
+
 
     public class PuzzleAnimation extends Animation {
         private static final String TAG = "PuzzleAnimation";

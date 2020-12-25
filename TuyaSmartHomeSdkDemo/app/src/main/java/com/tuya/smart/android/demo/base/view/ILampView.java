@@ -1,10 +1,7 @@
 package com.tuya.smart.android.demo.base.view;
 
 
-import android.graphics.Color;
-
 import com.tuya.smart.android.demo.base.bean.ColorBean;
-import com.tuya.smart.android.demo.base.bean.RgbBean;
 
 /**
  * Created by letian on 15/12/5.
@@ -29,5 +26,7 @@ public interface ILampView {
     void showOperationView();
 
     void sendLampColor(ColorBean bean);
+
+    void sendTempColor(ColorBean bean);
 
 }

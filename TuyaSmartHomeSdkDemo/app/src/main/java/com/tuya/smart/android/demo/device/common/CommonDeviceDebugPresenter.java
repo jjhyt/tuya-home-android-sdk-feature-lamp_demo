@@ -110,6 +110,7 @@ public class CommonDeviceDebugPresenter extends BasePresenter implements IDevLis
             case R.id.iv_sub:
                 TextView subTV = (TextView) view.getTag(R.id.schemaView);
                 String subV = subTV.getText().toString();
+                sendCommand(dpID, Integer.valueOf(subV) - 1);
                 break;
             case R.id.iv_add:
                 TextView addTV = (TextView) view.getTag(R.id.schemaView);

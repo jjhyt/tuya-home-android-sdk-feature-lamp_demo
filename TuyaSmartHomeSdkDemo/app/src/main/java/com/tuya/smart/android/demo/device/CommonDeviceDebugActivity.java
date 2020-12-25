@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -16,6 +15,8 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tuya.smart.android.common.utils.TuyaUtil;
@@ -45,6 +46,7 @@ public class CommonDeviceDebugActivity extends BaseActivity implements ICommonDe
 
     @BindView(R.id.test_log)
     public TextView mLogView;
+
 
     @BindView(R.id.test_scroll)
     public ScrollView testScroll;

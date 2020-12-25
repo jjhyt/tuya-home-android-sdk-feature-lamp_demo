@@ -1,33 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:id="@+id/ll_lamp_color_scene"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="220dp"
-        android:layout_marginLeft="@dimen/lamp_bar_margin_left"
-        android:layout_marginRight="@dimen/lamp_bar_margin_left"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="visible">
-        <Button
-            android:id="@+id/button_scene_1"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="scene_1" />
-        <Button
-            android:id="@+id/button_scene_2"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="scene_2" />
-        <Button
-            android:id="@+id/button_scene_3"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="scene_3" />
-    </LinearLayout>
+
+
     <LinearLayout
         android:id="@+id/ll_lamp_color_lighting"
         android:layout_width="match_parent"

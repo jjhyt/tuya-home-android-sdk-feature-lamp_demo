@@ -13,6 +13,8 @@ import com.tuya.smart.sdk.centralcontrol.api.ILightListener;
 import com.tuya.smart.sdk.centralcontrol.api.bean.LightDataPoint;
 import com.tuya.smart.sdk.centralcontrol.parser.bean.LightColourData;
 
+import java.util.HashMap;
+
 
 /**
  * Created by letian on 15/12/5.
@@ -84,18 +86,7 @@ public class LampPresenter extends BasePresenter implements ILightListener {
     public void syncColorToLamp(ColorBean bean) {
         float[] hsv = new float[3];
         Color.colorToHSV(bean.getColor(), hsv);
-  /*  应该是更改色温的代码，先写在这，测试使用
-            mLightDevice.colorTemperature(200, new IResultCallback() {
-            @Override
-            public void onError(String code, String error) {
 
-            }
-
-            @Override
-            public void onSuccess() {
-
-            }
-        });*/
         mLightDevice.colorHSV((int) hsv[0], (int) (hsv[1] * 100), (int) (hsv[2] * 100), new IResultCallback() {
             @Override
             public void onError(String code, String error) {
@@ -107,6 +98,22 @@ public class LampPresenter extends BasePresenter implements ILightListener {
 
             }
         });
+    }
+
+    public void syncTempToLamp(ColorBean bean) {
+  //  应该是更改色温的代码，先写在这，测试使用
+            mLightDevice.colorTemperature(bean.getWhite(), new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+
     }
 
 
@@ -180,5 +187,52 @@ public class LampPresenter extends BasePresenter implements ILightListener {
         super.onDestroy();
         mLightDevice.unRegisterDevListener();
     }
+    public void onButtonscene1(){
+        HashMap<String, Object> dpCodeMap = new HashMap<>();
+        dpCodeMap.put("work_mode", "scene_1");
+        mLightDevice.publishCommands(dpCodeMap, new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
 
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+
+    }
+    public void onButtonscene2(){
+        HashMap<String, Object> dpCodeMap = new HashMap<>();
+        dpCodeMap.put("work_mode", "scene_2");
+        mLightDevice.publishCommands(dpCodeMap, new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+
+    }
+    public void onButtonscene3(){
+        HashMap<String, Object> dpCodeMap = new HashMap<>();
+        dpCodeMap.put("work_mode", "scene_3");
+        mLightDevice.publishCommands(dpCodeMap, new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+
+    }
 }
