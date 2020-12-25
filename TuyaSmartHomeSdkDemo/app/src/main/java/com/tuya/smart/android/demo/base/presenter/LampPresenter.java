@@ -11,6 +11,7 @@ import com.tuya.smart.centralcontrol.TuyaLightDevice;
 import com.tuya.smart.sdk.api.IResultCallback;
 import com.tuya.smart.sdk.centralcontrol.api.ILightListener;
 import com.tuya.smart.sdk.centralcontrol.api.bean.LightDataPoint;
+import com.tuya.smart.sdk.centralcontrol.api.constants.LightScene;
 import com.tuya.smart.sdk.centralcontrol.parser.bean.LightColourData;
 
 import java.util.HashMap;
@@ -65,7 +66,66 @@ public class LampPresenter extends BasePresenter implements ILightListener {
             }
         });
     }
+    //添加阅读场景
+    private void startYuedu(){
+        mLightDevice.scene(LightScene.SCENE_READ, new IResultCallback(){
 
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+    }
+    //添加工作场景
+    public void startGongzuo(){
+        mLightDevice.scene(LightScene.SCENE_WORK, new IResultCallback(){
+
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+    }
+    //添加休闲场景
+    public void startXiuxian(){
+        mLightDevice.scene(LightScene.SCENE_CASUAL, new IResultCallback(){
+
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+    }
+    //添加晚安场景
+    public void startWanan(){
+        mLightDevice.scene(LightScene.SCENE_GOODNIGHT, new IResultCallback(){
+
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
+    }
 
     private void updateColorModeData(LightDataPoint lightDataPoint) {
         LightColourData data = lightDataPoint.colorHSV;
@@ -252,7 +312,7 @@ public class LampPresenter extends BasePresenter implements ILightListener {
 
     }
     public void onButtonwhite(){
-        HashMap<String, Object> dpCodeMap = new HashMap<>();
+        /*HashMap<String, Object> dpCodeMap = new HashMap<>();
         dpCodeMap.put("work_mode", "white");
         mLightDevice.publishCommands(dpCodeMap, new IResultCallback() {
             @Override
@@ -264,8 +324,8 @@ public class LampPresenter extends BasePresenter implements ILightListener {
             public void onSuccess() {
 
             }
-        });
-
+        });*/
+        startYuedu();
 
     }
     public void onButtoncolor(){

@@ -70,7 +70,7 @@ public class LampActivity extends BaseActivity implements ILampView {
         mButtonscene1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLampPresenter.onButtonscene1();
+                mLampPresenter.startWanan();
                // mButtonscene1.setText("SUCC");
             }
         });
@@ -89,7 +89,7 @@ public class LampActivity extends BaseActivity implements ILampView {
         mButtonscene.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLampPresenter.onButtonscene();
+                mLampPresenter.startXiuxian();
             }
         });
         mButtonwhite.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +101,7 @@ public class LampActivity extends BaseActivity implements ILampView {
         mButtoncolor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLampPresenter.onButtoncolor();
+                mLampPresenter.startGongzuo();
             }
         });
     }

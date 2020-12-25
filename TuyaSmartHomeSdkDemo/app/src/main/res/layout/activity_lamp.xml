@@ -52,7 +52,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:background="@drawable/lamp_btn_bg"
-                android:text="白光"/>
+                android:text="阅读"/>
             <TextView
                 android:id="@+id/button_scene_color"
                 android:layout_width="70dp"
@@ -63,7 +63,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:background="@drawable/lamp_btn_bg"
-                android:text="scene_4"/>
+                android:text="工作"/>
             <TextView
                 android:id="@+id/button_scene_scene"
                 android:layout_width="70dp"
@@ -74,7 +74,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:background="@drawable/lamp_btn_bg"
-                android:text="scene"/>
+                android:text="休闲"/>
 
             <TextView
                 android:id="@+id/button_scene_1"
@@ -87,7 +87,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:background="@drawable/lamp_btn_bg"
-                android:text="scene_1"/>
+                android:text="晚安"/>
 
             <TextView
                 android:id="@+id/button_scene_2"
