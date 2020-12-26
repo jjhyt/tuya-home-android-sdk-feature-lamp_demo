@@ -29,4 +29,6 @@ public interface ILampView {
 
     void sendTempColor(ColorBean bean);
 
+    void sendWhiteLight(ColorBean bean);
+
 }

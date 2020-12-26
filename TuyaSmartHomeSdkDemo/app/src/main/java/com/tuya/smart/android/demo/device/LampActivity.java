@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.tuya.smart.android.demo.R;
@@ -43,6 +44,10 @@ public class LampActivity extends BaseActivity implements ILampView {
     @BindView(R.id.fl_lamp_white_operation)
     public View mOperationView;
 
+    //定义拖动条和ID绑定
+    @BindView(R.id.sb_lamp_white_lighting)
+    public SeekBar mWhiteBar;
+
     //绑定按钮ID
     @BindView(R.id.button_scene_1)
     public TextView mButtonscene1;
@@ -66,6 +71,7 @@ public class LampActivity extends BaseActivity implements ILampView {
         initMenu();
         initView();
         initPresenter();
+
 //添加按钮事件
         mButtonscene1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +110,8 @@ public class LampActivity extends BaseActivity implements ILampView {
                 mLampPresenter.startGongzuo();
             }
         });
+
+
     }
 
     private void initView() {
@@ -192,6 +200,9 @@ public class LampActivity extends BaseActivity implements ILampView {
     public void sendTempColor(ColorBean bean) {
         mLampPresenter.syncTempToLamp(bean);
     }
+
+    @Override
+    public void sendWhiteLight(ColorBean bean) { mLampPresenter.changeWhiteLight(bean); }
 
     @OnClick(R.id.iv_lamp_close)
     public void onLampClick() {

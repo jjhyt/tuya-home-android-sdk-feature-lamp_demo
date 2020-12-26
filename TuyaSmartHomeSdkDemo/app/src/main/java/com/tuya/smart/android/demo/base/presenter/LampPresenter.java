@@ -125,6 +125,36 @@ public class LampPresenter extends BasePresenter implements ILightListener {
 
             }
         });
+
+    }
+
+    //添加调节白光亮度
+    public void changeWhiteLight(ColorBean bean) {
+        /*mLightDevice.brightness(bean.getWhiteBright(), new IResultCallback() {
+
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });*/
+        HashMap<String, Object> dpCodeMap = new HashMap<>();
+        dpCodeMap.put("bright_value", bean.getWhiteBright());
+        mLightDevice.publishCommands(dpCodeMap, new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
+
+            }
+
+            @Override
+            public void onSuccess() {
+
+            }
+        });
     }
 
     private void updateColorModeData(LightDataPoint lightDataPoint) {

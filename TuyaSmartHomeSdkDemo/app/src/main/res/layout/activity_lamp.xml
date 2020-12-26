@@ -29,6 +29,8 @@
                 android:src="@drawable/ty_lamp_up_arrow" />
         </LinearLayout>
 
+
+
         <GridLayout
             android:id="@+id/ll_lamp_color_scene"
             android:layout_width="match_parent"
@@ -36,7 +38,7 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_marginBottom="220dp"
+            android:layout_marginBottom="180dp"
             android:columnCount="3"
             android:gravity="center"
             android:orientation="horizontal"

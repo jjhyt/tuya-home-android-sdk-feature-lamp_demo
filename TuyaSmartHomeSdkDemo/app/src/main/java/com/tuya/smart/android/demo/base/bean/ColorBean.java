@@ -5,6 +5,7 @@ package com.tuya.smart.android.demo.base.bean;
  */
 public class ColorBean extends RgbBean {
     private int white;
+    private int bright;
     private int value;
     private int saturation;
 
@@ -14,6 +15,14 @@ public class ColorBean extends RgbBean {
 
     public void setWhite(int white) {
         this.white = white;
+    }
+
+    public int getWhiteBright() {
+        return bright;
+    }
+
+    public void setWhiteBright(int bright) {
+        this.bright = bright;
     }
 
     public int getValue() {

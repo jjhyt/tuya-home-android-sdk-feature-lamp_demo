@@ -18,17 +18,17 @@ import com.tuya.smart.android.demo.base.view.ILampView;
 import com.tuya.smart.android.demo.base.widget.ColorPicker;
 import com.tuya.smart.android.demo.base.widget.LampView;
 
-import java.util.HashMap;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 /**
- * Created by letian on 15/12/10.
+ * Created by letian on 15/12/10.  注意这里面的setValue getValue 白光采光亮度共用的，不知道有没有什么Bug
  */
 public class LampOperationColorFactory implements LampOperationFactory, SeekBar.OnSeekBarChangeListener {
 //定义拖动条和ID绑定
     @BindView(R.id.sb_lamp_color_lighting)
     public SeekBar mLightBar;
+    @BindView(R.id.sb_lamp_white_lighting)
+    public SeekBar mWhiteLightBar;
     @BindView(R.id.sb_lamp_color_saturation)
     public SeekBar mSaturationBar;
     @BindView(R.id.sb_lamp_colorlengnuan)
@@ -36,8 +36,11 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
 
 //定义拖动条最小值和最大值
     private static final int S_COLOR_LIGHT_MIN_COLOR = 11;
+    private static final int S_WHITE_LIGHT_MIN = 25;
     private static final int S_COLOR_SATURATION_MAX = 255;
     private static final int S_COLOR_LIGHT_MAX = S_COLOR_SATURATION_MAX ;
+    private static final int S_LENGNUAN_MAX= 100;
+    private static final int S_WHITE_LIGHT_MAX= 230;
 
     @BindView(R.id.ll_lamp_color_lighting)
     public View mLightView;
@@ -73,13 +76,18 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
     private void initSeekBar() {
         mLightBar.setOnSeekBarChangeListener(this);
         mLightBar.setMax(S_COLOR_LIGHT_MAX);
+        mWhiteLightBar.setOnSeekBarChangeListener(this);
+        mWhiteLightBar.setMax(S_WHITE_LIGHT_MAX);
         mSaturationBar.setOnSeekBarChangeListener(this);
         mSaturationBar.setMax(S_COLOR_LIGHT_MAX);
         mLengnuanBar.setOnSeekBarChangeListener(this);
-        mLengnuanBar.setMax(S_COLOR_LIGHT_MAX);
+        mLengnuanBar.setMax(S_LENGNUAN_MAX);
+//        mLengnuanBar.setMin(S_LENGNUAN_MIN);
         mLightBar.setProgress(S_COLOR_LIGHT_MAX);
+        mWhiteLightBar.setProgress(S_WHITE_LIGHT_MAX);
         mSaturationBar.setProgress(S_COLOR_LIGHT_MAX);
         mLengnuanBar.setProgress(S_COLOR_LIGHT_MAX);
+
     }
 
     private void initView(Activity activity) {
@@ -132,6 +140,7 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
             mLightBar.setProgress(((ColorBean) bean).getValue() - S_COLOR_LIGHT_MIN_COLOR);
             mSaturationBar.setProgress(((ColorBean) bean).getSaturation());
             mLengnuanBar.setProgress(((ColorBean) bean).getWhite());
+            mWhiteLightBar.setProgress(((ColorBean) bean).getValue() + S_WHITE_LIGHT_MIN);
             mLampView.setColor(bean.getColor());
             if (mLampView.getVisibility() == View.GONE) {
                 mLampView.setVisibility(View.VISIBLE);
@@ -154,6 +163,10 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
         switch(seekBar.getId()) {
             case R.id.sb_lamp_colorlengnuan:{
                 sendtempColor();
+                break;
+            }
+            case R.id.sb_lamp_white_lighting:{
+                sendwhiteLight();
                 break;
             }
             default:
@@ -186,6 +199,13 @@ public class LampOperationColorFactory implements LampOperationFactory, SeekBar.
         //发送冷暖光的值
         bean.setWhite(mLengnuanBar.getProgress());
         mView.sendTempColor(bean);
+    }
+    private void sendwhiteLight() {
+        ColorBean bean = new ColorBean();
+
+        //发送亮度的值
+        bean.setWhiteBright(mWhiteLightBar.getProgress() + S_WHITE_LIGHT_MIN);
+        mView.sendWhiteLight(bean);
     }
 
 
