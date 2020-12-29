@@ -98,6 +98,25 @@ public class SceneListPresenter extends BasePresenter {
                 ToastUtil.shortToast(mActivity, R.string.success);
             }
         });
+
+
+    }
+    //1
+    public void delScene(SceneBean bean) {
+        //删除场景代码，
+        TuyaHomeSdk.newSceneInstance(bean.getId()).deleteScene(new IResultCallback() {
+            @Override
+            public void onError(String code, String error) {
+                ToastUtil.shortToast(mActivity, error);
+
+            }
+
+            @Override
+            public void onSuccess() {
+                ToastUtil.shortToast(mActivity, "删除成功！");
+
+            }
+        });
     }
 
     public void switchAutomation(SceneBean bean) {

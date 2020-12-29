@@ -2,12 +2,13 @@ package com.tuya.smart.android.demo.scene.adapter;
 
 import android.content.Context;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.kyleduo.switchbutton.SwitchButton;
 import com.squareup.picasso.Picasso;
@@ -29,6 +30,8 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.SceneViewHol
     private Context mContext;
     private OnExecuteListener mExecuteListener;
     private OnSwitchListener mSwitchListener;
+    //1
+    private OnDellListener mDellListener;
     public SmartAdapter(Context context, int type){
         mType = type;
         mContext = context;
@@ -54,6 +57,7 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.SceneViewHol
         final SceneBean sceneBean = datas.get(i);
         Picasso.with(mContext).load(Uri.parse(sceneBean.getBackground())).into(viewHolder.scene_bg);
         viewHolder.tv_title.setText(sceneBean.getName());
+
         if(mType == SMART_TYPE_SCENE){
             viewHolder.tv_excute.setVisibility(View.VISIBLE);
             viewHolder.tv_excute.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +67,7 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.SceneViewHol
                 }
             });
             viewHolder.swtich.setVisibility(View.GONE);
+
         } else {
             viewHolder.tv_excute.setVisibility(View.GONE);
             viewHolder.swtich.setVisibility(View.VISIBLE);
@@ -72,7 +77,15 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.SceneViewHol
                     if(null != mSwitchListener) mSwitchListener.onSwitchAutomation(sceneBean);
                 }
             });
+
         }
+        //2
+        viewHolder.scene_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(null != mDellListener) mDellListener.onDell(sceneBean);
+            }
+        });
 
     }
 
@@ -82,12 +95,22 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.SceneViewHol
     public void setOnSwitchListener(OnSwitchListener listener){
         mSwitchListener = listener;
     }
+    //3
+    public void setOnDellListener(OnDellListener listener){
+        mDellListener = listener;
+    }
+
     public interface OnExecuteListener {
         void onExecute(SceneBean bean);
     }
     public interface OnSwitchListener {
         void onSwitchAutomation(SceneBean bean);
     }
+    //4
+    public interface OnDellListener {
+        void onDell(SceneBean bean);
+    }
+
     @Override
     public int getItemCount() {
         return datas.size();
@@ -97,12 +120,16 @@ public class SmartAdapter extends RecyclerView.Adapter<SmartAdapter.SceneViewHol
         ImageView scene_bg;
         TextView tv_title;
         TextView tv_excute;
+        //5
+        ImageView scene_setting;
         SwitchButton swtich;
         public SceneViewHolder(@NonNull View itemView) {
             super(itemView);
             scene_bg = itemView.findViewById(R.id.scene_bg);
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_excute = itemView.findViewById(R.id.tv_excute);
+            //6
+            scene_setting = itemView.findViewById(R.id.scene_setting);
             swtich = itemView.findViewById(R.id.swtich);
         }
     }

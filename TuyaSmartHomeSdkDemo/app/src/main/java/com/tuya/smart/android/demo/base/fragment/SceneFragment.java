@@ -131,6 +131,21 @@ public class SceneFragment extends BaseFragment implements ISceneListFragmentVie
                 mPresenter.switchAutomation(bean);
             }
         });
+        //1
+        mSceneAdapter.setOnDellListener(new SmartAdapter.OnDellListener() {
+            @Override
+            public void onDell(SceneBean bean) {
+                mPresenter.delScene(bean);
+            }
+
+        });
+        mAutoAdapter.setOnDellListener(new SmartAdapter.OnDellListener() {
+            @Override
+            public void onDell(SceneBean bean) {
+                mPresenter.delScene(bean);
+            }
+
+        });
     }
 
     private void initSwipeRefreshLayout() {
